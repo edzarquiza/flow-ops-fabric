@@ -1,0 +1,13 @@
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#e6fbf7', 'primaryBorderColor': '#0f766e', 'primaryTextColor': '#0f172a', 'lineColor': '#0f766e', 'fontFamily': 'Segoe UI, sans-serif'}}}%%
+flowchart LR
+    A["Run_Incremental_Ingestion<br/><i>CopyJob_FlowOps_Incremental</i><br/>INGEST"]
+    B["Run_Data_Quality<br/><i>NB_FlowOps_DataQuality</i><br/>VALIDATE"]
+    C["Run_Silver_Transform<br/><i>NB_FlowOps_Transform</i><br/>TRANSFORM"]
+    D["Run_Gold_Refresh<br/><i>dbo.usp_RefreshFlowOpsGold</i><br/>SERVE"]
+
+    A -->|"1m 15s"| B -->|"1m 41s"| C -->|"4m 12s"| D -->|"23s"| E(["Pipeline Succeeded"])
+
+    classDef step fill:#e6fbf7,stroke:#0f766e,color:#0f172a
+    classDef done fill:#dcfce7,stroke:#15803d,color:#0f172a
+    class A,B,C,D step
+    class E done

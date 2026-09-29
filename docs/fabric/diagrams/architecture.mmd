@@ -1,0 +1,36 @@
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#e6fbf7', 'primaryBorderColor': '#0f766e', 'primaryTextColor': '#0f172a', 'lineColor': '#0f766e', 'fontFamily': 'Segoe UI, sans-serif'}}}%%
+flowchart TB
+    subgraph SRC["SOURCE"]
+        APP["FlowOps Application<br/><i>Operations & Delivery Management</i>"]
+        PG[("PostgreSQL / Neon")]
+        APP --> PG
+    end
+
+    subgraph PLAT["DATA PLATFORM — Microsoft Fabric"]
+        DF["Fabric Data Factory<br/>CopyJob_FlowOps_Incremental<br/>CopyJob_FlowOps_Reference"]
+        BRZ[("Bronze Lakehouse<br/>LH_FlowOps_Bronze")]
+        DQ{{"Data Quality<br/>NB_FlowOps_DataQuality<br/>19 checks"}}
+        SLV[("Silver Lakehouse<br/>LH_FlowOps_Silver")]
+        GLD[("Gold Warehouse<br/>WH_FlowOps_Analytics")]
+        DF --> BRZ --> DQ --> SLV --> GLD
+    end
+
+    subgraph SEM["ANALYTICAL LAYER"]
+        SM["Direct Lake Semantic Model<br/>SM_FlowOps_Analytics"]
+    end
+
+    subgraph CONS["CONSUMPTION"]
+        PBI["Power BI<br/>FlowOps Operations Analytics"]
+    end
+
+    PG --> DF
+    GLD --> SM --> PBI
+
+    classDef src fill:#f1f5f9,stroke:#334155,color:#0f172a
+    classDef plat fill:#e6fbf7,stroke:#0f766e,color:#0f172a
+    classDef sem fill:#fef3c7,stroke:#b45309,color:#0f172a
+    classDef cons fill:#ede9fe,stroke:#6d28d9,color:#0f172a
+    class APP,PG src
+    class DF,BRZ,DQ,SLV,GLD plat
+    class SM sem
+    class PBI cons
