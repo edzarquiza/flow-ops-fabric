@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 860" font-family="Arial, Helvetica, sans-serif">
+  <rect x="0" y="0" width="1700" height="860" fill="#ffffff"/>
+
+  <text x="40" y="48" font-size="34" font-weight="800" fill="#10263b">Data Model</text>
+  <text x="40" y="78" font-size="16" fill="#5b7280">Six dimensions and two facts &#8212; the actual Direct Lake semantic-model relationships, not a copy of the transactional schema.</text>
+
+  <defs>
+    <g id="ic-table">
+      <rect x="4" y="4" width="34" height="26" rx="3" fill="none" stroke="#0f9488" stroke-width="2.2"/>
+      <line x1="4" y1="13" x2="38" y2="13" stroke="#0f9488" stroke-width="2"/>
+      <line x1="15" y1="4" x2="15" y2="30" stroke="#0f9488" stroke-width="2"/>
+      <line x1="27" y1="4" x2="27" y2="30" stroke="#0f9488" stroke-width="2"/>
+    </g>
+    <g id="ic-fact">
+      <path d="M18 2 L34 10 V26 L18 34 L2 26 V10 Z" fill="#0f9488"/>
+      <path d="M18 2 L34 10 L18 18 L2 10 Z" fill="#12b3a3"/>
+    </g>
+  </defs>
+
+  <!-- fan-in connector lines: dimension top-center -> hub bottom-center -->
+  <g stroke="#0f9488" stroke-width="2" fill="none">
+    <line x1="175" y1="340" x2="850" y2="260"/>
+    <line x1="445" y1="340" x2="850" y2="260"/>
+    <line x1="715" y1="340" x2="850" y2="260"/>
+    <line x1="985" y1="340" x2="850" y2="260"/>
+    <line x1="1255" y1="340" x2="850" y2="260"/>
+    <line x1="1525" y1="340" x2="850" y2="260"/>
+  </g>
+  <!-- "1" markers near each dimension -->
+  <g font-size="11" font-weight="800" fill="#0b6b62">
+    <circle cx="175" cy="340" r="11" fill="#ffffff" stroke="#0f9488" stroke-width="1.6"/>
+    <text x="175" y="344" text-anchor="middle">1</text>
+    <circle cx="445" cy="340" r="11" fill="#ffffff" stroke="#0f9488" stroke-width="1.6"/>
+    <text x="445" y="344" text-anchor="middle">1</text>
+    <circle cx="715" cy="340" r="11" fill="#ffffff" stroke="#0f9488" stroke-width="1.6"/>
+    <text x="715" y="344" text-anchor="middle">1</text>
+    <circle cx="985" cy="340" r="11" fill="#ffffff" stroke="#0f9488" stroke-width="1.6"/>
+    <text x="985" y="344" text-anchor="middle">1</text>
+    <circle cx="1255" cy="340" r="11" fill="#ffffff" stroke="#0f9488" stroke-width="1.6"/>
+    <text x="1255" y="344" text-anchor="middle">1</text>
+    <circle cx="1525" cy="340" r="11" fill="#ffffff" stroke="#0f9488" stroke-width="1.6"/>
+    <text x="1525" y="344" text-anchor="middle">1</text>
+  </g>
+  <!-- shared "many" marker at the hub -->
+  <circle cx="850" cy="260" r="13" fill="#ffffff" stroke="#0f9488" stroke-width="1.8"/>
+  <text x="850" y="265" font-size="14" font-weight="800" fill="#0b6b62" text-anchor="middle">*</text>
+
+  <!-- row3 connector lines -->
+  <g stroke="#0f9488" stroke-width="2" fill="none">
+    <line x1="985" y1="530" x2="985" y2="660"/>
+    <line x1="1525" y1="530" x2="1525" y2="660"/>
+  </g>
+  <circle cx="985" cy="530" r="11" fill="#ffffff" stroke="#0f9488" stroke-width="1.6"/>
+  <text x="985" y="534" font-size="11" font-weight="800" fill="#0b6b62" text-anchor="middle">*</text>
+  <circle cx="985" cy="660" r="11" fill="#ffffff" stroke="#0f9488" stroke-width="1.6"/>
+  <text x="985" y="664" font-size="11" font-weight="800" fill="#0b6b62" text-anchor="middle">1</text>
+  <circle cx="1525" cy="530" r="11" fill="#ffffff" stroke="#0f9488" stroke-width="1.6"/>
+  <text x="1525" y="534" font-size="11" font-weight="800" fill="#0b6b62" text-anchor="middle">1</text>
+  <circle cx="1525" cy="660" r="11" fill="#ffffff" stroke="#0f9488" stroke-width="1.6"/>
+  <text x="1525" y="664" font-size="11" font-weight="800" fill="#0b6b62" text-anchor="middle">*</text>
+
+  <!-- HUB: FactTicket -->
+  <g>
+    <rect x="700" y="110" width="300" height="150" rx="16" fill="#eafaf7" stroke="#0f9488" stroke-width="3"/>
+    <use href="#ic-fact" x="830" y="122"/>
+    <text x="850" y="178" font-size="21" font-weight="800" fill="#0b3f3a" text-anchor="middle" letter-spacing="0.5">FACTTICKET</text>
+    <text x="850" y="198" font-size="12" fill="#0b6b62" text-anchor="middle">Grain: one row per ticket</text>
+    <g font-size="10.5" font-weight="700" fill="#0b6b62">
+      <rect x="720" y="212" width="72" height="22" rx="11" fill="#d3f2ea"/>
+      <text x="756" y="227" text-anchor="middle">TicketID</text>
+      <rect x="800" y="212" width="70" height="22" rx="11" fill="#d3f2ea"/>
+      <text x="835" y="227" text-anchor="middle">SLAMet</text>
+      <rect x="878" y="212" width="102" height="22" rx="11" fill="#d3f2ea"/>
+      <text x="929" y="227" text-anchor="middle">ReopenCount</text>
+    </g>
+  </g>
+
+  <!-- Row2: six dimension cards -->
+  <!-- DimDate -->
+  <g>
+    <rect x="50" y="340" width="250" height="190" rx="14" fill="#f7fafa" stroke="#dce7e5" stroke-width="2"/>
+    <use href="#ic-table" x="70" y="356"/>
+    <text x="175" y="410" font-size="15" font-weight="800" fill="#10263b" text-anchor="middle">DIMDATE</text>
+    <text x="175" y="432" font-size="12" fill="#33475a" text-anchor="middle">Date &#183; DayOfWeekName</text>
+    <text x="175" y="450" font-size="12" fill="#33475a" text-anchor="middle">QuarterName</text>
+    <line x1="70" y1="486" x2="280" y2="486" stroke="#dce7e5" stroke-width="1"/>
+    <text x="175" y="508" font-size="11" fill="#5b7280" text-anchor="middle" font-style="italic">Calendar dimension</text>
+  </g>
+
+  <!-- DimProject -->
+  <g>
+    <rect x="320" y="340" width="250" height="190" rx="14" fill="#f7fafa" stroke="#dce7e5" stroke-width="2"/>
+    <use href="#ic-table" x="340" y="356"/>
+    <text x="445" y="410" font-size="15" font-weight="800" fill="#10263b" text-anchor="middle">DIMPROJECT</text>
+    <text x="445" y="432" font-size="12" fill="#33475a" text-anchor="middle">ProjectID &#183; ProjectName</text>
+    <text x="445" y="450" font-size="12" fill="#33475a" text-anchor="middle">OrganizationID</text>
+    <line x1="340" y1="486" x2="550" y2="486" stroke="#dce7e5" stroke-width="1"/>
+    <text x="445" y="508" font-size="11" fill="#5b7280" text-anchor="middle" font-style="italic">Project dimension</text>
+  </g>
+
+  <!-- DimCategory -->
+  <g>
+    <rect x="590" y="340" width="250" height="190" rx="14" fill="#f7fafa" stroke="#dce7e5" stroke-width="2"/>
+    <use href="#ic-table" x="610" y="356"/>
+    <text x="715" y="410" font-size="15" font-weight="800" fill="#10263b" text-anchor="middle">DIMCATEGORY</text>
+    <text x="715" y="432" font-size="12" fill="#33475a" text-anchor="middle">CategoryID</text>
+    <text x="715" y="450" font-size="12" fill="#33475a" text-anchor="middle">CategoryName</text>
+    <line x1="610" y1="486" x2="820" y2="486" stroke="#dce7e5" stroke-width="1"/>
+    <text x="715" y="508" font-size="11" fill="#5b7280" text-anchor="middle" font-style="italic">Ticket category dimension</text>
+  </g>
+
+  <!-- DimTeam -->
+  <g>
+    <rect x="860" y="340" width="250" height="190" rx="14" fill="#f7fafa" stroke="#dce7e5" stroke-width="2"/>
+    <use href="#ic-table" x="880" y="356"/>
+    <text x="985" y="410" font-size="15" font-weight="800" fill="#10263b" text-anchor="middle">DIMTEAM</text>
+    <text x="985" y="432" font-size="12" fill="#33475a" text-anchor="middle">TeamID &#183; TeamName</text>
+    <text x="985" y="450" font-size="12" fill="#33475a" text-anchor="middle">OrganizationID</text>
+    <line x1="880" y1="486" x2="1090" y2="486" stroke="#dce7e5" stroke-width="1"/>
+    <text x="985" y="508" font-size="11" fill="#5b7280" text-anchor="middle" font-style="italic">Team dimension</text>
+  </g>
+
+  <!-- DimUser -->
+  <g>
+    <rect x="1130" y="340" width="250" height="190" rx="14" fill="#f7fafa" stroke="#dce7e5" stroke-width="2"/>
+    <use href="#ic-table" x="1150" y="356"/>
+    <text x="1255" y="410" font-size="15" font-weight="800" fill="#10263b" text-anchor="middle">DIMUSER</text>
+    <text x="1255" y="432" font-size="12" fill="#33475a" text-anchor="middle">UserID &#183; DisplayName</text>
+    <text x="1255" y="450" font-size="12" fill="#33475a" text-anchor="middle">PrimaryTeamID</text>
+    <line x1="1150" y1="486" x2="1360" y2="486" stroke="#dce7e5" stroke-width="1"/>
+    <text x="1255" y="508" font-size="11" fill="#5b7280" text-anchor="middle" font-style="italic">User / assignee dimension</text>
+  </g>
+
+  <!-- DimTicket -->
+  <g>
+    <rect x="1400" y="340" width="250" height="190" rx="14" fill="#f7fafa" stroke="#dce7e5" stroke-width="2"/>
+    <use href="#ic-table" x="1420" y="356"/>
+    <text x="1525" y="410" font-size="15" font-weight="800" fill="#10263b" text-anchor="middle">DIMTICKET</text>
+    <text x="1525" y="432" font-size="12" fill="#33475a" text-anchor="middle">TicketID &#183; Reference</text>
+    <text x="1525" y="450" font-size="12" fill="#33475a" text-anchor="middle">Priority &#183; Status</text>
+    <line x1="1420" y1="486" x2="1630" y2="486" stroke="#dce7e5" stroke-width="1"/>
+    <text x="1525" y="508" font-size="11" fill="#5b7280" text-anchor="middle" font-style="italic">Ticket descriptive dimension</text>
+  </g>
+
+  <!-- Row3: DimOrganization (under DimTeam) -->
+  <g>
+    <rect x="860" y="660" width="250" height="150" rx="14" fill="#f7fafa" stroke="#dce7e5" stroke-width="2"/>
+    <use href="#ic-table" x="880" y="674"/>
+    <text x="985" y="726" font-size="15" font-weight="800" fill="#10263b" text-anchor="middle">DIMORGANIZATION</text>
+    <text x="985" y="748" font-size="12" fill="#33475a" text-anchor="middle">OrganizationID</text>
+    <text x="985" y="766" font-size="12" fill="#33475a" text-anchor="middle">OrganizationName</text>
+    <line x1="880" y1="786" x2="1090" y2="786" stroke="#dce7e5" stroke-width="1"/>
+    <text x="985" y="800" font-size="11" fill="#5b7280" text-anchor="middle" font-style="italic">Organization dimension</text>
+  </g>
+
+  <!-- Row3: FactTicketEvent (under DimTicket) -->
+  <g>
+    <rect x="1400" y="660" width="250" height="150" rx="14" fill="#eafaf7" stroke="#0f9488" stroke-width="2.2"/>
+    <use href="#ic-fact" x="1500" y="672"/>
+    <text x="1525" y="726" font-size="15" font-weight="800" fill="#0b3f3a" text-anchor="middle">FACTTICKETEVENT</text>
+    <text x="1525" y="748" font-size="12" fill="#0b6b62" text-anchor="middle">EventID &#183; TicketID</text>
+    <text x="1525" y="766" font-size="12" fill="#0b6b62" text-anchor="middle">EventType &#183; ActorUserID</text>
+    <line x1="1420" y1="786" x2="1630" y2="786" stroke="#bfe6e0" stroke-width="1"/>
+    <text x="1525" y="800" font-size="11" fill="#0b6b62" text-anchor="middle" font-style="italic">Ticket activity fact</text>
+  </g>
+</svg>

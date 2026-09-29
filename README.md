@@ -105,23 +105,7 @@ Those durations are what one successful run measured — not a benchmark, an SLA
 
 ## Data Lifecycle
 
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#e6fbf7', 'primaryBorderColor': '#0f766e', 'primaryTextColor': '#0f172a', 'lineColor': '#0f766e', 'fontFamily': 'Segoe UI, sans-serif'}}}%%
-flowchart TB
-    S1["SOURCE<br/><i>FlowOps PostgreSQL / Neon</i>"]
-    S2["INGEST<br/><i>CopyJob_FlowOps_Incremental</i>"]
-    S3["BRONZE<br/><i>LH_FlowOps_Bronze</i>"]
-    S4["VALIDATE<br/><i>19 Data Quality Checks</i>"]
-    S5["SILVER<br/><i>LH_FlowOps_Silver</i>"]
-    S6["GOLD<br/><i>WH_FlowOps_Analytics</i>"]
-    S7["MODEL<br/><i>SM_FlowOps_Analytics</i>"]
-    S8["ANALYZE<br/><i>FlowOps Operations Analytics</i>"]
-
-    S1 --> S2 --> S3 --> S4 --> S5 --> S6 --> S7 --> S8
-
-    classDef stage fill:#e6fbf7,stroke:#0f766e,color:#0f172a
-    class S1,S2,S3,S4,S5,S6,S7,S8 stage
-```
+![Data Lifecycle](docs/fabric/diagrams/data-lifecycle-diagram.svg)
 
 Every stage above maps to a real, named Fabric artifact — nothing here is a placeholder for a step that doesn't exist yet.
 
@@ -148,22 +132,7 @@ That's **incremental batch ingestion** — not real-time or streaming. The point
 
 ## Bronze → Silver → Gold
 
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#e6fbf7', 'primaryBorderColor': '#0f766e', 'primaryTextColor': '#0f172a', 'lineColor': '#0f766e', 'fontFamily': 'Segoe UI, sans-serif'}}}%%
-flowchart TB
-    B["BRONZE — Raw / Source-Aligned<br/><i>LH_FlowOps_Bronze</i>"]
-    S["SILVER — Refined / Analytical<br/><i>LH_FlowOps_Silver</i>"]
-    G["GOLD — Curated / Reporting-Ready<br/><i>WH_FlowOps_Analytics</i>"]
-
-    B -->|"Data Quality + PySpark transform"| S -->|"usp_RefreshFlowOpsGold"| G
-
-    classDef bronze fill:#fef3c7,stroke:#b45309,color:#0f172a
-    classDef silver fill:#e2e8f0,stroke:#475569,color:#0f172a
-    classDef gold fill:#fef9c3,stroke:#a16207,color:#0f172a
-    class B bronze
-    class S silver
-    class G gold
-```
+![Bronze, Silver, Gold layers](docs/fabric/diagrams/bronze-silver-gold-diagram.svg)
 
 - **Bronze** (`LH_FlowOps_Bronze`) lands data close to its source shape, before any interpretation is applied.
 - **Silver** (`LH_FlowOps_Silver`) is where `NB_FlowOps_Transform` (PySpark) reshapes it into dimension/fact tables — `dim_ticket`, `dim_user`, `dim_team`, `dim_category`, `dim_project`, `dim_organization`, `dim_date`, `fact_ticket_events`.
@@ -176,23 +145,7 @@ flowchart TB
 
 Validation runs *before* the data is allowed to reach Silver, not after — a real engineering control, not an afterthought:
 
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#e6fbf7', 'primaryBorderColor': '#0f766e', 'primaryTextColor': '#0f172a', 'lineColor': '#0f766e', 'fontFamily': 'Segoe UI, sans-serif'}}}%%
-flowchart TB
-    BRZ["Bronze Data"] --> DQ["Automated Validation<br/><i>NB_FlowOps_DataQuality</i>"]
-    DQ --> C1["Completeness — 8 checks"]
-    DQ --> C2["Uniqueness — 2 checks"]
-    DQ --> C3["Domain — 3 checks"]
-    DQ --> C4["Temporal — 1 check"]
-    DQ --> C5["Referential Integrity — 5 checks"]
-    C1 & C2 & C3 & C4 & C5 --> R(["19 Checks · 0 Issues · PASS"])
-    R --> SLV["Silver Transformation"]
-
-    classDef cat fill:#e6fbf7,stroke:#0f766e,color:#0f172a
-    classDef pass fill:#dcfce7,stroke:#15803d,color:#0f172a
-    class C1,C2,C3,C4,C5 cat
-    class R pass
-```
+![Data Quality flow](docs/fabric/diagrams/data-quality-diagram.svg)
 
 | Category | Checks | Covers |
 |---|---:|---|
@@ -206,42 +159,7 @@ Current verified result: **19 checks, 0 issues, PASS** — persisted to `LH_Flow
 
 ## Data Model
 
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#e6fbf7', 'primaryBorderColor': '#0f766e', 'primaryTextColor': '#0f172a', 'lineColor': '#0f766e', 'fontFamily': 'Segoe UI, sans-serif'}}}%%
-erDiagram
-    DimDate ||--o{ FactTicket : "CreatedDate"
-    DimProject ||--o{ FactTicket : "ProjectID"
-    DimCategory ||--o{ FactTicket : "CategoryID"
-    DimTeam ||--o{ FactTicket : "TeamID"
-    DimUser ||--o{ FactTicket : "AssigneeID"
-    DimOrganization ||--o{ DimTeam : "OrganizationID"
-    DimTicket ||--|| FactTicket : "TicketID"
-    DimTicket ||--o{ FactTicketEvent : "TicketID"
-
-    DimTicket {
-        int TicketID PK
-        string TicketReference
-        string WorkType
-        string Priority
-        string Status
-    }
-    FactTicket {
-        int TicketID FK
-        int TeamID FK
-        int ProjectID FK
-        int CategoryID FK
-        int AssigneeID FK
-        date CreatedDate FK
-        bool SLAMet
-        int ReopenCount
-    }
-    FactTicketEvent {
-        int EventID PK
-        int TicketID FK
-        string EventType
-        int ActorUserID
-    }
-```
+![Data Model](docs/fabric/diagrams/data-model-diagram.svg)
 
 ![Semantic model](FlowOps_Fabric_Screenshots/Semantic_Model.PNG)
 *`SM_FlowOps_Analytics` in Model view — the actual relationships behind the diagram above, not a simplified stand-in for it.*

@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 560" font-family="Arial, Helvetica, sans-serif">
+  <rect x="0" y="0" width="1500" height="560" fill="#ffffff"/>
+
+  <text x="40" y="52" font-size="34" font-weight="800" fill="#10263b">Bronze &#8594; Silver &#8594; Gold</text>
+  <text x="40" y="82" font-size="16" fill="#5b7280">Three layers, three responsibilities: land it raw, refine it, then curate it for reporting.</text>
+
+  <defs>
+    <g id="ic-layers-bronze-lg">
+      <path d="M36 10 L64 26 L36 42 L8 26 Z" fill="#c17a2c"/>
+      <path d="M36 32 L64 48 L36 64 L8 48 Z" fill="none" stroke="#c17a2c" stroke-width="4"/>
+      <path d="M36 54 L64 70 L36 86 L8 70 Z" fill="none" stroke="#c17a2c" stroke-width="4" opacity="0.55"/>
+    </g>
+    <g id="ic-layers-silver-lg">
+      <path d="M36 10 L64 26 L36 42 L8 26 Z" fill="#8592a0"/>
+      <path d="M36 32 L64 48 L36 64 L8 48 Z" fill="none" stroke="#8592a0" stroke-width="4"/>
+      <path d="M36 54 L64 70 L36 86 L8 70 Z" fill="none" stroke="#8592a0" stroke-width="4" opacity="0.55"/>
+    </g>
+    <g id="ic-layers-gold-lg">
+      <path d="M36 10 L64 26 L36 42 L8 26 Z" fill="#c9971e"/>
+      <path d="M36 32 L64 48 L36 64 L8 48 Z" fill="none" stroke="#c9971e" stroke-width="4"/>
+      <path d="M36 54 L64 70 L36 86 L8 70 Z" fill="none" stroke="#c9971e" stroke-width="4" opacity="0.55"/>
+    </g>
+    <marker id="arrow2" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#0f9488"/>
+    </marker>
+  </defs>
+
+  <!-- arrows: bronze(40-420) -> gap(420-560) -> silver(560-940) -> gap(940-1080) -> gold(1080-1460) -->
+  <g stroke="#0f9488" stroke-width="3" fill="none">
+    <line x1="420" y1="330" x2="554" y2="330" marker-end="url(#arrow2)"/>
+    <line x1="940" y1="330" x2="1074" y2="330" marker-end="url(#arrow2)"/>
+  </g>
+  <text x="487" y="300" font-size="12" fill="#0b6b62" text-anchor="middle" font-weight="700">DATA QUALITY</text>
+  <text x="487" y="317" font-size="12" fill="#0b6b62" text-anchor="middle" font-weight="700">+ PYSPARK</text>
+  <text x="1007" y="300" font-size="12" fill="#0b6b62" text-anchor="middle" font-weight="700">GOLD REFRESH</text>
+  <text x="1007" y="317" font-size="12" fill="#0b6b62" text-anchor="middle" font-weight="700">PROCEDURE</text>
+
+  <!-- BRONZE card -->
+  <g>
+    <rect x="40" y="150" width="380" height="360" rx="16" fill="#fbf3e9" stroke="#e8c9a0" stroke-width="2.5"/>
+    <use href="#ic-layers-bronze-lg" x="194" y="176"/>
+    <text x="230" y="288" font-size="20" font-weight="800" fill="#10263b" text-anchor="middle" letter-spacing="0.5">BRONZE</text>
+    <text x="230" y="310" font-size="13" fill="#8a5a20" text-anchor="middle">LH_FlowOps_Bronze</text>
+
+    <g font-size="13.5" fill="#33475a">
+      <circle cx="70" cy="342" r="3" fill="#c17a2c"/>
+      <text x="82" y="347">Raw, source-aligned tables</text>
+      <circle cx="70" cy="372" r="3" fill="#c17a2c"/>
+      <text x="82" y="377">Landing zone for both Copy Jobs</text>
+      <circle cx="70" cy="402" r="3" fill="#c17a2c"/>
+      <text x="82" y="407">10 raw tables (tickets, events,</text>
+      <text x="82" y="424">comments, reference data)</text>
+    </g>
+
+    <line x1="70" y1="452" x2="390" y2="452" stroke="#e8c9a0" stroke-width="1"/>
+    <text x="230" y="480" font-size="12.5" fill="#8a5a20" text-anchor="middle" font-style="italic">Preserve source data before interpretation</text>
+  </g>
+
+  <!-- SILVER card -->
+  <g>
+    <rect x="560" y="150" width="380" height="360" rx="16" fill="#f3f4f6" stroke="#cbd3d8" stroke-width="2.5"/>
+    <use href="#ic-layers-silver-lg" x="714" y="176"/>
+    <text x="750" y="288" font-size="20" font-weight="800" fill="#10263b" text-anchor="middle" letter-spacing="0.5">SILVER</text>
+    <text x="750" y="310" font-size="13" fill="#5b7280" text-anchor="middle">LH_FlowOps_Silver</text>
+
+    <g font-size="13.5" fill="#33475a">
+      <circle cx="590" cy="342" r="3" fill="#8592a0"/>
+      <text x="602" y="347">PySpark-transformed dimensions</text>
+      <text x="602" y="364">&amp; facts</text>
+      <circle cx="590" cy="384" r="3" fill="#8592a0"/>
+      <text x="602" y="389">dim_ticket, dim_user, dim_team,</text>
+      <text x="602" y="406">dim_date, fact_ticket_events&#8230;</text>
+      <circle cx="590" cy="426" r="3" fill="#8592a0"/>
+      <text x="602" y="431">dq_results persisted here</text>
+    </g>
+
+    <line x1="590" y1="452" x2="910" y2="452" stroke="#cbd3d8" stroke-width="1"/>
+    <text x="750" y="480" font-size="12.5" fill="#5b7280" text-anchor="middle" font-style="italic">Refine raw data into analytical shape</text>
+  </g>
+
+  <!-- GOLD card -->
+  <g>
+    <rect x="1080" y="150" width="380" height="360" rx="16" fill="#fdf6df" stroke="#eddc9a" stroke-width="2.5"/>
+    <use href="#ic-layers-gold-lg" x="1234" y="176"/>
+    <text x="1270" y="288" font-size="20" font-weight="800" fill="#10263b" text-anchor="middle" letter-spacing="0.5">GOLD</text>
+    <text x="1270" y="310" font-size="13" fill="#8a6d1a" text-anchor="middle">WH_FlowOps_Analytics</text>
+
+    <g font-size="13.5" fill="#33475a">
+      <circle cx="1110" cy="342" r="3" fill="#c9971e"/>
+      <text x="1122" y="347">Dimensional Warehouse model</text>
+      <circle cx="1110" cy="372" r="3" fill="#c9971e"/>
+      <text x="1122" y="377">Refreshed by</text>
+      <text x="1122" y="394">usp_RefreshFlowOpsGold</text>
+      <circle cx="1110" cy="416" r="3" fill="#c9971e"/>
+      <text x="1122" y="421">Serves the Direct Lake</text>
+      <text x="1122" y="438">semantic model</text>
+    </g>
+
+    <line x1="1110" y1="452" x2="1430" y2="452" stroke="#eddc9a" stroke-width="1"/>
+    <text x="1270" y="480" font-size="12.5" fill="#8a6d1a" text-anchor="middle" font-style="italic">Curated, reporting-ready layer</text>
+  </g>
+</svg>

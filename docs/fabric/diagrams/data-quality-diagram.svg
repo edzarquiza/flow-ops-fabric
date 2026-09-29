@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1540 520" font-family="Arial, Helvetica, sans-serif">
+  <rect x="0" y="0" width="1540" height="520" fill="#ffffff"/>
+
+  <text x="40" y="52" font-size="34" font-weight="800" fill="#10263b">Data Quality</text>
+  <text x="40" y="82" font-size="16" fill="#5b7280">Validation is a gate, not an afterthought &#8212; nothing reaches Silver unvalidated.</text>
+
+  <defs>
+    <g id="ic-doc">
+      <path d="M12 4 H32 L40 12 V44 H12 Z" fill="#e5edf0" stroke="#7c8fa0" stroke-width="2"/>
+      <path d="M32 4 V12 H40 Z" fill="#c3d2d9"/>
+      <line x1="18" y1="22" x2="34" y2="22" stroke="#7c8fa0" stroke-width="2"/>
+      <line x1="18" y1="30" x2="34" y2="30" stroke="#7c8fa0" stroke-width="2"/>
+      <line x1="18" y1="38" x2="28" y2="38" stroke="#7c8fa0" stroke-width="2"/>
+    </g>
+    <g id="ic-checklist">
+      <rect x="8" y="4" width="36" height="44" rx="4" fill="#eafaf3" stroke="#16a34a" stroke-width="2"/>
+      <path d="M14 15 L18 19 L25 11" fill="none" stroke="#16a34a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="29" y1="15" x2="38" y2="15" stroke="#16a34a" stroke-width="2.4"/>
+      <path d="M14 26 L18 30 L25 22" fill="none" stroke="#16a34a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="29" y1="26" x2="38" y2="26" stroke="#16a34a" stroke-width="2.4"/>
+      <path d="M14 37 L18 41 L25 33" fill="none" stroke="#16a34a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="29" y1="37" x2="38" y2="37" stroke="#16a34a" stroke-width="2.4"/>
+    </g>
+    <g id="ic-bigcheck">
+      <circle cx="26" cy="26" r="26" fill="#16a34a"/>
+      <path d="M14 27 L22 35 L39 16" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <g id="ic-gear">
+      <path d="M24 4 L28 4 L29.5 10 L34.5 12 L39.5 8.5 L42.5 11.5 L39 16.5 L41 21.5 L47 23 V27 L41 28.5 L39 33.5 L42.5 38.5 L39.5 41.5 L34.5 38 L29.5 40 L28 46 H24 L22.5 40 L17.5 38 L12.5 41.5 L9.5 38.5 L13 33.5 L11 28.5 L5 27 V23 L11 21.5 L13 16.5 L9.5 11.5 L12.5 8.5 L17.5 12 L22.5 10 Z" fill="#0f9488" opacity="0.9"/>
+      <circle cx="26" cy="25" r="8" fill="#ffffff"/>
+    </g>
+    <marker id="arrow3" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#0f9488"/>
+    </marker>
+  </defs>
+
+  <g stroke="#0f9488" stroke-width="3" fill="none">
+    <line x1="362" y1="300" x2="418" y2="300" marker-end="url(#arrow3)"/>
+    <line x1="742" y1="300" x2="798" y2="300" marker-end="url(#arrow3)"/>
+    <line x1="1122" y1="300" x2="1178" y2="300" marker-end="url(#arrow3)"/>
+  </g>
+
+  <!-- Card 1: BRONZE DATA -->
+  <g>
+    <rect x="40" y="140" width="320" height="320" rx="16" fill="#f7fafa" stroke="#dce7e5" stroke-width="2"/>
+    <use href="#ic-doc" x="180" y="168"/>
+    <text x="200" y="252" font-size="17" font-weight="800" fill="#10263b" text-anchor="middle" letter-spacing="0.5">BRONZE DATA</text>
+    <text x="200" y="278" font-size="13" fill="#33475a" text-anchor="middle">Ingested, unvalidated</text>
+    <text x="200" y="296" font-size="13" fill="#33475a" text-anchor="middle">tables</text>
+    <line x1="70" y1="412" x2="330" y2="412" stroke="#dce7e5" stroke-width="1"/>
+    <text x="200" y="436" font-size="12" fill="#5b7280" text-anchor="middle" font-style="italic">Input to validation</text>
+  </g>
+
+  <!-- Card 2: AUTOMATED VALIDATION (emphasized) -->
+  <g>
+    <rect x="420" y="132" width="320" height="336" rx="16" fill="#eefaf1" stroke="#16a34a" stroke-width="2.5"/>
+    <use href="#ic-checklist" x="558" y="150"/>
+    <text x="580" y="222" font-size="17" font-weight="800" fill="#10263b" text-anchor="middle" letter-spacing="0.5">AUTOMATED VALIDATION</text>
+
+    <g font-size="12.5" fill="#33475a">
+      <text x="450" y="252">Completeness &#8212; 8 checks</text>
+      <text x="450" y="276">Uniqueness &#8212; 2 checks</text>
+      <text x="450" y="300">Domain &#8212; 3 checks</text>
+      <text x="450" y="324">Temporal &#8212; 1 check</text>
+      <text x="450" y="348">Referential Integrity &#8212; 5 checks</text>
+    </g>
+
+    <line x1="450" y1="420" x2="710" y2="420" stroke="#bfe6cc" stroke-width="1"/>
+    <text x="580" y="444" font-size="12" fill="#15803d" text-anchor="middle" font-style="italic">NB_FlowOps_DataQuality</text>
+  </g>
+
+  <!-- Card 3: RESULT -->
+  <g>
+    <rect x="800" y="140" width="320" height="320" rx="16" fill="#f7fafa" stroke="#dce7e5" stroke-width="2"/>
+    <use href="#ic-bigcheck" x="934" y="164"/>
+    <text x="960" y="244" font-size="17" font-weight="800" fill="#10263b" text-anchor="middle" letter-spacing="0.5">RESULT</text>
+    <text x="960" y="278" font-size="26" font-weight="800" fill="#15803d" text-anchor="middle">19 / 0</text>
+    <text x="960" y="298" font-size="12" fill="#33475a" text-anchor="middle">Checks / Issues</text>
+    <rect x="905" y="312" width="110" height="28" rx="14" fill="#dcfce7"/>
+    <text x="960" y="330" font-size="13" font-weight="800" fill="#15803d" text-anchor="middle" letter-spacing="1">PASS</text>
+    <line x1="830" y1="412" x2="1090" y2="412" stroke="#dce7e5" stroke-width="1"/>
+    <text x="960" y="436" font-size="12" fill="#5b7280" text-anchor="middle" font-style="italic">Persisted to dq_results</text>
+  </g>
+
+  <!-- Card 4: SILVER TRANSFORMATION -->
+  <g>
+    <rect x="1180" y="140" width="320" height="320" rx="16" fill="#f7fafa" stroke="#dce7e5" stroke-width="2"/>
+    <use href="#ic-gear" x="1314" y="168"/>
+    <text x="1340" y="252" font-size="16" font-weight="800" fill="#10263b" text-anchor="middle" letter-spacing="0.5">SILVER TRANSFORMATION</text>
+    <text x="1340" y="280" font-size="13" fill="#33475a" text-anchor="middle">Validated data</text>
+    <text x="1340" y="298" font-size="13" fill="#33475a" text-anchor="middle">proceeds downstream</text>
+    <line x1="1210" y1="412" x2="1470" y2="412" stroke="#dce7e5" stroke-width="1"/>
+    <text x="1340" y="436" font-size="12" fill="#5b7280" text-anchor="middle" font-style="italic">NB_FlowOps_Transform</text>
+  </g>
+</svg>

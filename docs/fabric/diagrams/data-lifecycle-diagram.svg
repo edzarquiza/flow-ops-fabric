@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1650 460" font-family="Arial, Helvetica, sans-serif">
+  <rect x="0" y="0" width="1650" height="460" fill="#ffffff"/>
+
+  <text x="40" y="52" font-size="34" font-weight="800" fill="#10263b">Data Lifecycle</text>
+  <text x="40" y="82" font-size="16" fill="#5b7280">From a raw source event to a Power BI insight &#8212; the eight-stage analytical journey.</text>
+
+  <defs>
+    <!-- database cylinder -->
+    <g id="ic-db">
+      <ellipse cx="24" cy="12" rx="16" ry="6" fill="#0f9488"/>
+      <path d="M8 12 L8 34 C8 37.3 15.2 40 24 40 C32.8 40 40 37.3 40 34 L40 12" fill="#0f9488" opacity="0.85"/>
+      <ellipse cx="24" cy="34" rx="16" ry="6" fill="none" stroke="#0b6b62" stroke-width="1.5"/>
+      <ellipse cx="24" cy="23" rx="16" ry="6" fill="none" stroke="#0b6b62" stroke-width="1.2" opacity="0.6"/>
+    </g>
+    <!-- download / ingest -->
+    <g id="ic-ingest">
+      <path d="M24 6 V28" stroke="#0f9488" stroke-width="4" stroke-linecap="round"/>
+      <path d="M13 20 L24 31 L35 20" fill="none" stroke="#0f9488" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M8 38 H40" stroke="#0f9488" stroke-width="4" stroke-linecap="round"/>
+    </g>
+    <!-- layers -->
+    <g id="ic-layers-bronze">
+      <path d="M24 6 L42 16 L24 26 L6 16 Z" fill="#c17a2c"/>
+      <path d="M24 20 L42 30 L24 40 L6 30 Z" fill="none" stroke="#c17a2c" stroke-width="3"/>
+    </g>
+    <g id="ic-layers-silver">
+      <path d="M24 6 L42 16 L24 26 L6 16 Z" fill="#8592a0"/>
+      <path d="M24 20 L42 30 L24 40 L6 30 Z" fill="none" stroke="#8592a0" stroke-width="3"/>
+    </g>
+    <g id="ic-layers-gold">
+      <path d="M24 6 L42 16 L24 26 L6 16 Z" fill="#c9971e"/>
+      <path d="M24 20 L42 30 L24 40 L6 30 Z" fill="none" stroke="#c9971e" stroke-width="3"/>
+    </g>
+    <!-- shield check -->
+    <g id="ic-shield">
+      <path d="M24 5 L40 12 V22 C40 32 33 38 24 41 C15 38 8 32 8 22 V12 Z" fill="#16a34a" opacity="0.9"/>
+      <path d="M17 22 L22 28 L32 16" fill="none" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <!-- network nodes -->
+    <g id="ic-network">
+      <circle cx="24" cy="10" r="5.5" fill="#6366f1"/>
+      <circle cx="10" cy="34" r="5.5" fill="#6366f1"/>
+      <circle cx="38" cy="34" r="5.5" fill="#6366f1"/>
+      <path d="M24 15 L10 29 M24 15 L38 29 M14 34 H34" stroke="#6366f1" stroke-width="2.4"/>
+    </g>
+    <!-- bar chart -->
+    <g id="ic-bars">
+      <rect x="8" y="24" width="8" height="16" rx="1.5" fill="#d9a404"/>
+      <rect x="20" y="14" width="8" height="26" rx="1.5" fill="#d9a404"/>
+      <rect x="32" y="6" width="8" height="34" rx="1.5" fill="#d9a404"/>
+    </g>
+  </defs>
+
+  <!-- card template values -->
+  <!-- x positions -->
+  <!-- 40,234,428,622,816,1010,1204,1398 -->
+
+  <!-- connecting arrows -->
+  <g stroke="#0f9488" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <line x1="210" y1="270" x2="232" y2="270"/>
+    <line x1="404" y1="270" x2="426" y2="270"/>
+    <line x1="598" y1="270" x2="620" y2="270"/>
+    <line x1="792" y1="270" x2="814" y2="270"/>
+    <line x1="986" y1="270" x2="1008" y2="270"/>
+    <line x1="1180" y1="270" x2="1202" y2="270"/>
+    <line x1="1374" y1="270" x2="1396" y2="270"/>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#0f9488"/>
+    </marker>
+  </defs>
+
+  <!-- Card 1: SOURCE -->
+  <g>
+    <rect x="40" y="140" width="170" height="260" rx="14" fill="#f7fafa" stroke="#dce7e5" stroke-width="2"/>
+    <use href="#ic-db" x="101" y="160"/>
+    <text x="125" y="240" font-size="15" font-weight="800" fill="#10263b" text-anchor="middle" letter-spacing="0.5">SOURCE</text>
+    <text x="125" y="262" font-size="12" fill="#33475a" text-anchor="middle">FlowOps</text>
+    <text x="125" y="278" font-size="12" fill="#33475a" text-anchor="middle">PostgreSQL / Neon</text>
+    <line x1="60" y1="352" x2="190" y2="352" stroke="#dce7e5" stroke-width="1"/>
+    <text x="125" y="374" font-size="11" fill="#5b7280" text-anchor="middle" font-style="italic">Operational data origin</text>
+  </g>
+
+  <!-- Card 2: INGEST -->
+  <g>
+    <rect x="234" y="140" width="170" height="260" rx="14" fill="#f7fafa" stroke="#dce7e5" stroke-width="2"/>
+    <use href="#ic-ingest" x="295" y="160"/>
+    <text x="319" y="240" font-size="15" font-weight="800" fill="#10263b" text-anchor="middle" letter-spacing="0.5">INGEST</text>
+    <text x="319" y="262" font-size="12" fill="#33475a" text-anchor="middle">CopyJob_FlowOps_</text>
+    <text x="319" y="278" font-size="12" fill="#33475a" text-anchor="middle">Incremental</text>
+    <line x1="254" y1="352" x2="384" y2="352" stroke="#dce7e5" stroke-width="1"/>
+    <text x="319" y="374" font-size="11" fill="#5b7280" text-anchor="middle" font-style="italic">Watermark-based Copy Job</text>
+  </g>
+
+  <!-- Card 3: BRONZE -->
+  <g>
+    <rect x="428" y="140" width="170" height="260" rx="14" fill="#fbf3e9" stroke="#e8c9a0" stroke-width="2"/>
+    <use href="#ic-layers-bronze" x="489" y="160"/>
+    <text x="513" y="240" font-size="15" font-weight="800" fill="#10263b" text-anchor="middle" letter-spacing="0.5">BRONZE</text>
+    <text x="513" y="262" font-size="12" fill="#33475a" text-anchor="middle">LH_FlowOps_</text>
+    <text x="513" y="278" font-size="12" fill="#33475a" text-anchor="middle">Bronze</text>
+    <line x1="448" y1="352" x2="578" y2="352" stroke="#e8c9a0" stroke-width="1"/>
+    <text x="513" y="374" font-size="11" fill="#8a5a20" text-anchor="middle" font-style="italic">Raw landing zone</text>
+  </g>
+
+  <!-- Card 4: VALIDATE (emphasized) -->
+  <g>
+    <rect x="622" y="132" width="170" height="276" rx="14" fill="#eefaf1" stroke="#16a34a" stroke-width="2.5"/>
+    <use href="#ic-shield" x="683" y="154"/>
+    <text x="707" y="238" font-size="15" font-weight="800" fill="#10263b" text-anchor="middle" letter-spacing="0.5">VALIDATE</text>
+    <text x="707" y="260" font-size="12" fill="#33475a" text-anchor="middle">19 Data Quality</text>
+    <text x="707" y="276" font-size="12" fill="#33475a" text-anchor="middle">Checks</text>
+    <line x1="642" y1="356" x2="772" y2="356" stroke="#bfe6cc" stroke-width="1"/>
+    <text x="707" y="380" font-size="11" fill="#15803d" text-anchor="middle" font-weight="700">0 issues &#183; PASS</text>
+  </g>
+
+  <!-- Card 5: SILVER -->
+  <g>
+    <rect x="816" y="140" width="170" height="260" rx="14" fill="#f3f4f6" stroke="#cbd3d8" stroke-width="2"/>
+    <use href="#ic-layers-silver" x="877" y="160"/>
+    <text x="901" y="240" font-size="15" font-weight="800" fill="#10263b" text-anchor="middle" letter-spacing="0.5">SILVER</text>
+    <text x="901" y="262" font-size="12" fill="#33475a" text-anchor="middle">LH_FlowOps_</text>
+    <text x="901" y="278" font-size="12" fill="#33475a" text-anchor="middle">Silver</text>
+    <line x1="836" y1="352" x2="966" y2="352" stroke="#cbd3d8" stroke-width="1"/>
+    <text x="901" y="374" font-size="11" fill="#5b7280" text-anchor="middle" font-style="italic">Refined dims &amp; facts</text>
+  </g>
+
+  <!-- Card 6: GOLD -->
+  <g>
+    <rect x="1010" y="140" width="170" height="260" rx="14" fill="#fdf6df" stroke="#eddc9a" stroke-width="2"/>
+    <use href="#ic-layers-gold" x="1071" y="160"/>
+    <text x="1095" y="240" font-size="15" font-weight="800" fill="#10263b" text-anchor="middle" letter-spacing="0.5">GOLD</text>
+    <text x="1095" y="262" font-size="12" fill="#33475a" text-anchor="middle">WH_FlowOps_</text>
+    <text x="1095" y="278" font-size="12" fill="#33475a" text-anchor="middle">Analytics</text>
+    <line x1="1030" y1="352" x2="1160" y2="352" stroke="#eddc9a" stroke-width="1"/>
+    <text x="1095" y="374" font-size="11" fill="#8a6d1a" text-anchor="middle" font-style="italic">Curated Warehouse</text>
+  </g>
+
+  <!-- Card 7: MODEL -->
+  <g>
+    <rect x="1204" y="140" width="170" height="260" rx="14" fill="#f2f1fb" stroke="#d3c3ef" stroke-width="2"/>
+    <use href="#ic-network" x="1265" y="160"/>
+    <text x="1289" y="240" font-size="15" font-weight="800" fill="#10263b" text-anchor="middle" letter-spacing="0.5">MODEL</text>
+    <text x="1289" y="262" font-size="12" fill="#33475a" text-anchor="middle">SM_FlowOps_</text>
+    <text x="1289" y="278" font-size="12" fill="#33475a" text-anchor="middle">Analytics</text>
+    <line x1="1224" y1="352" x2="1354" y2="352" stroke="#d3c3ef" stroke-width="1"/>
+    <text x="1289" y="374" font-size="11" fill="#5b4b96" text-anchor="middle" font-style="italic">Direct Lake model</text>
+  </g>
+
+  <!-- Card 8: ANALYZE -->
+  <g>
+    <rect x="1398" y="140" width="170" height="260" rx="14" fill="#fdf7e6" stroke="#f0d9a0" stroke-width="2"/>
+    <use href="#ic-bars" x="1459" y="160"/>
+    <text x="1483" y="240" font-size="15" font-weight="800" fill="#10263b" text-anchor="middle" letter-spacing="0.5">ANALYZE</text>
+    <text x="1483" y="262" font-size="12" fill="#33475a" text-anchor="middle">FlowOps Operations</text>
+    <text x="1483" y="278" font-size="12" fill="#33475a" text-anchor="middle">Analytics</text>
+    <line x1="1418" y1="352" x2="1548" y2="352" stroke="#f0d9a0" stroke-width="1"/>
+    <text x="1483" y="374" font-size="11" fill="#8a6d1a" text-anchor="middle" font-style="italic">Power BI reporting</text>
+  </g>
+</svg>
