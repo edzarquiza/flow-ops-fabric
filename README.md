@@ -29,44 +29,7 @@ It's an applied implementation, not a Fabric tutorial: every component below was
 
 ## Architecture
 
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#e6fbf7', 'primaryBorderColor': '#0f766e', 'primaryTextColor': '#0f172a', 'lineColor': '#0f766e', 'fontFamily': 'Segoe UI, sans-serif'}}}%%
-flowchart TB
-    subgraph SRC["SOURCE"]
-        APP["FlowOps Application<br/><i>Operations & Delivery Management</i>"]
-        PG[("PostgreSQL / Neon")]
-        APP --> PG
-    end
-
-    subgraph PLAT["DATA PLATFORM — Microsoft Fabric"]
-        DF["Fabric Data Factory<br/>CopyJob_FlowOps_Incremental<br/>CopyJob_FlowOps_Reference"]
-        BRZ[("Bronze Lakehouse<br/>LH_FlowOps_Bronze")]
-        DQ{{"Data Quality<br/>NB_FlowOps_DataQuality<br/>19 checks"}}
-        SLV[("Silver Lakehouse<br/>LH_FlowOps_Silver")]
-        GLD[("Gold Warehouse<br/>WH_FlowOps_Analytics")]
-        DF --> BRZ --> DQ --> SLV --> GLD
-    end
-
-    subgraph SEM["ANALYTICAL LAYER"]
-        SM["Direct Lake Semantic Model<br/>SM_FlowOps_Analytics"]
-    end
-
-    subgraph CONS["CONSUMPTION"]
-        PBI["Power BI<br/>FlowOps Operations Analytics"]
-    end
-
-    PG --> DF
-    GLD --> SM --> PBI
-
-    classDef src fill:#f1f5f9,stroke:#334155,color:#0f172a
-    classDef plat fill:#e6fbf7,stroke:#0f766e,color:#0f172a
-    classDef sem fill:#fef3c7,stroke:#b45309,color:#0f172a
-    classDef cons fill:#ede9fe,stroke:#6d28d9,color:#0f172a
-    class APP,PG src
-    class DF,BRZ,DQ,SLV,GLD plat
-    class SM sem
-    class PBI cons
-```
+![FlowOps Service Operations Analytics Platform architecture](docs/fabric/diagrams/architecture-diagram.png)
 
 ![Fabric workspace](FlowOps_Fabric_Screenshots/Fabric_workspace.PNG)
 *The `FlowOps Analytics` Fabric workspace — the Copy Jobs, both Lakehouses, both Notebooks, the orchestration Pipeline, the Warehouse, the semantic model, and the Power BI report, all in one place.*
@@ -82,21 +45,7 @@ flowchart TB
 
 The Fabric pipeline `PL_FlowOps_Ingestion` orchestrates four stages, each gated on the previous one succeeding:
 
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#e6fbf7', 'primaryBorderColor': '#0f766e', 'primaryTextColor': '#0f172a', 'lineColor': '#0f766e', 'fontFamily': 'Segoe UI, sans-serif'}}}%%
-flowchart LR
-    A["Run_Incremental_Ingestion<br/><i>CopyJob_FlowOps_Incremental</i><br/>INGEST"]
-    B["Run_Data_Quality<br/><i>NB_FlowOps_DataQuality</i><br/>VALIDATE"]
-    C["Run_Silver_Transform<br/><i>NB_FlowOps_Transform</i><br/>TRANSFORM"]
-    D["Run_Gold_Refresh<br/><i>dbo.usp_RefreshFlowOpsGold</i><br/>SERVE"]
-
-    A -->|"1m 15s"| B -->|"1m 41s"| C -->|"4m 12s"| D -->|"23s"| E(["Pipeline Succeeded"])
-
-    classDef step fill:#e6fbf7,stroke:#0f766e,color:#0f172a
-    classDef done fill:#dcfce7,stroke:#15803d,color:#0f172a
-    class A,B,C,D step
-    class E done
-```
+![Pipeline flow](docs/fabric/diagrams/pipeline-flow-diagram.png)
 
 ![Pipeline run](FlowOps_Fabric_Screenshots/Pipeline_Run.PNG)
 *A captured successful run of `PL_FlowOps_Ingestion` — all four activities succeeded, in sequence, in just under 7½ minutes.*
@@ -260,13 +209,13 @@ Flow_Ops_Fabric/
 ├── docs/
 │   └── fabric/
 │       ├── FABRIC_PROJECT_CONTEXT.md      — full implementation reference (exact object names, row counts, screenshot inventory)
-│       └── diagrams/                       — Mermaid sources for every diagram in this README
-│           ├── architecture.mmd
-│           ├── pipeline-flow.mmd
-│           ├── data-lifecycle.mmd
-│           ├── bronze-silver-gold.mmd
-│           ├── data-quality.mmd
-│           └── data-model.mmd
+│       └── diagrams/                       — every diagram used in this README
+│           ├── architecture-diagram.png
+│           ├── pipeline-flow-diagram.png
+│           ├── data-lifecycle-diagram.svg
+│           ├── bronze-silver-gold-diagram.svg
+│           ├── data-quality-diagram.svg
+│           └── data-model-diagram.svg
 └── FlowOps_Fabric_Screenshots/            — the actual Fabric/Power BI screenshots used as evidence throughout this README
 ```
 
